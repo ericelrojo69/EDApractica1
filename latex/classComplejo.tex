@@ -1,0 +1,168 @@
+\hypertarget{classComplejo}{}\doxysection{Complejo Class Reference}
+\label{classComplejo}\index{Complejo@{Complejo}}
+
+
+{\ttfamily \#include $<$complejo.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classComplejo_a47ff5b1401713b53d025867a9fb5e6a0}{Complejo}} ()
+\item 
+\mbox{\hyperlink{classComplejo_a4007dfe7af39815245a40eea6c948f2c}{Complejo}} (float m, float a)
+\item 
+bool \mbox{\hyperlink{classComplejo_a2ee3c53be1b1ad963772fd28719726e3}{inv}} ()
+\item 
+float \mbox{\hyperlink{classComplejo_a8d90aa9b0eb829403b2b58f59fd4b375}{get\+Real}} () const
+\item 
+float \mbox{\hyperlink{classComplejo_a150c35a4d0c23d1a8aaeabfb2b754a52}{get\+Imag}} () const
+\item 
+\mbox{\hyperlink{classComplejo}{Complejo}} \mbox{\hyperlink{classComplejo_a5d3ab363dffcbff1a1d68f414baa9806}{operator+}} (const \mbox{\hyperlink{classComplejo}{Complejo}} c) const
+\item 
+\mbox{\hyperlink{classComplejo}{Complejo}} \mbox{\hyperlink{classComplejo_a3ce3ad3e6cda0f7c4dc38b384655c4dc}{operator$\ast$}} (const \mbox{\hyperlink{classComplejo}{Complejo}} c) const
+\item 
+bool \mbox{\hyperlink{classComplejo_a61fd3bccc0538510f21027ba04897c6b}{operator==}} (const \mbox{\hyperlink{classComplejo}{Complejo}} c) const
+\item 
+void \mbox{\hyperlink{classComplejo_addd250d872a78a9b10a788731fb01ae5}{set}} (float m, float a)
+\item 
+void \mbox{\hyperlink{classComplejo_a8ca5295cc06b6a2264355b8d96ed88ac}{set\+Rec}} (float r, float i)
+\item 
+void \mbox{\hyperlink{classComplejo_a700dc551f44bbd2e9667053ef2259008}{print}} () const
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{classComplejo}{Complejo}}. Representacion de numeros complejos en notacion polar 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classComplejo_a47ff5b1401713b53d025867a9fb5e6a0}\label{classComplejo_a47ff5b1401713b53d025867a9fb5e6a0}} 
+\index{Complejo@{Complejo}!Complejo@{Complejo}}
+\index{Complejo@{Complejo}!Complejo@{Complejo}}
+\doxysubsubsection{\texorpdfstring{Complejo()}{Complejo()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Complejo\+::\+Complejo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Crea un complejo inicializandolo a 0 + 0i \mbox{\Hypertarget{classComplejo_a4007dfe7af39815245a40eea6c948f2c}\label{classComplejo_a4007dfe7af39815245a40eea6c948f2c}} 
+\index{Complejo@{Complejo}!Complejo@{Complejo}}
+\index{Complejo@{Complejo}!Complejo@{Complejo}}
+\doxysubsubsection{\texorpdfstring{Complejo()}{Complejo()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Complejo\+::\+Complejo (\begin{DoxyParamCaption}\item[{float}]{m,  }\item[{float}]{a }\end{DoxyParamCaption})}
+
+Crea un complejo con un valor inicial para el modulo y el argumento. 
+\begin{DoxyParams}{Parameters}
+{\em m} & Modulo. \\
+\hline
+{\em a} & Argumento. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classComplejo_a150c35a4d0c23d1a8aaeabfb2b754a52}\label{classComplejo_a150c35a4d0c23d1a8aaeabfb2b754a52}} 
+\index{Complejo@{Complejo}!getImag@{getImag}}
+\index{getImag@{getImag}!Complejo@{Complejo}}
+\doxysubsubsection{\texorpdfstring{getImag()}{getImag()}}
+{\footnotesize\ttfamily float Complejo\+::get\+Imag (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Obtiene la parte imaginaria del complejo. \begin{DoxyReturn}{Returns}
+Parte imaginaria del complejo. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classComplejo_a8d90aa9b0eb829403b2b58f59fd4b375}\label{classComplejo_a8d90aa9b0eb829403b2b58f59fd4b375}} 
+\index{Complejo@{Complejo}!getReal@{getReal}}
+\index{getReal@{getReal}!Complejo@{Complejo}}
+\doxysubsubsection{\texorpdfstring{getReal()}{getReal()}}
+{\footnotesize\ttfamily float Complejo\+::get\+Real (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Obtiene la parte real del complejo. \begin{DoxyReturn}{Returns}
+Parte real del complejo. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classComplejo_a2ee3c53be1b1ad963772fd28719726e3}\label{classComplejo_a2ee3c53be1b1ad963772fd28719726e3}} 
+\index{Complejo@{Complejo}!inv@{inv}}
+\index{inv@{inv}!Complejo@{Complejo}}
+\doxysubsubsection{\texorpdfstring{inv()}{inv()}}
+{\footnotesize\ttfamily bool Complejo\+::inv (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Invariante de clase para complejos en notacion polar. \begin{DoxyReturn}{Returns}
+Indicador de complejo valido (true) o invalido (false). 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classComplejo_a3ce3ad3e6cda0f7c4dc38b384655c4dc}\label{classComplejo_a3ce3ad3e6cda0f7c4dc38b384655c4dc}} 
+\index{Complejo@{Complejo}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!Complejo@{Complejo}}
+\doxysubsubsection{\texorpdfstring{operator$\ast$()}{operator*()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classComplejo}{Complejo}} Complejo\+::operator$\ast$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classComplejo}{Complejo}}}]{c }\end{DoxyParamCaption}) const}
+
+Multiplica dos complejos. 
+\begin{DoxyParams}{Parameters}
+{\em c} & Parametro explicito del producto. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classComplejo}{Complejo}} resultado del producto. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classComplejo_a5d3ab363dffcbff1a1d68f414baa9806}\label{classComplejo_a5d3ab363dffcbff1a1d68f414baa9806}} 
+\index{Complejo@{Complejo}!operator+@{operator+}}
+\index{operator+@{operator+}!Complejo@{Complejo}}
+\doxysubsubsection{\texorpdfstring{operator+()}{operator+()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classComplejo}{Complejo}} Complejo\+::operator+ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classComplejo}{Complejo}}}]{c }\end{DoxyParamCaption}) const}
+
+Suma dos complejos. 
+\begin{DoxyParams}{Parameters}
+{\em c} & Parametro explicito de la suma. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classComplejo}{Complejo}} resultado de la suma. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classComplejo_a61fd3bccc0538510f21027ba04897c6b}\label{classComplejo_a61fd3bccc0538510f21027ba04897c6b}} 
+\index{Complejo@{Complejo}!operator==@{operator==}}
+\index{operator==@{operator==}!Complejo@{Complejo}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool Complejo\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classComplejo}{Complejo}}}]{c }\end{DoxyParamCaption}) const}
+
+Compara dos complejos e indica si son iguales. 
+\begin{DoxyParams}{Parameters}
+{\em c} & Parametro explicito de la comparacion. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Indicador de igualdad. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classComplejo_a700dc551f44bbd2e9667053ef2259008}\label{classComplejo_a700dc551f44bbd2e9667053ef2259008}} 
+\index{Complejo@{Complejo}!print@{print}}
+\index{print@{print}!Complejo@{Complejo}}
+\doxysubsubsection{\texorpdfstring{print()}{print()}}
+{\footnotesize\ttfamily void Complejo\+::print (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Imprime el complejo por pantalla \mbox{\Hypertarget{classComplejo_addd250d872a78a9b10a788731fb01ae5}\label{classComplejo_addd250d872a78a9b10a788731fb01ae5}} 
+\index{Complejo@{Complejo}!set@{set}}
+\index{set@{set}!Complejo@{Complejo}}
+\doxysubsubsection{\texorpdfstring{set()}{set()}}
+{\footnotesize\ttfamily void Complejo\+::set (\begin{DoxyParamCaption}\item[{float}]{m,  }\item[{float}]{a }\end{DoxyParamCaption})}
+
+Asigna nuevos valores al modulo y el argumento del complejo. 
+\begin{DoxyParams}{Parameters}
+{\em m} & Nuevo modulo. \\
+\hline
+{\em a} & Nuevo argumento. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classComplejo_a8ca5295cc06b6a2264355b8d96ed88ac}\label{classComplejo_a8ca5295cc06b6a2264355b8d96ed88ac}} 
+\index{Complejo@{Complejo}!setRec@{setRec}}
+\index{setRec@{setRec}!Complejo@{Complejo}}
+\doxysubsubsection{\texorpdfstring{setRec()}{setRec()}}
+{\footnotesize\ttfamily void Complejo\+::set\+Rec (\begin{DoxyParamCaption}\item[{float}]{r,  }\item[{float}]{i }\end{DoxyParamCaption})}
+
+Asigna nuevos valores al modulo y argumento del complejo a partir de nuevas coordenadas polares para el mismo.
+
+
+\begin{DoxyParams}{Parameters}
+{\em r} & Coordenada real \\
+\hline
+{\em i} & Coordenada imaginaria \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{complejo_8h}{complejo.\+h}}\item 
+\mbox{\hyperlink{complejo_8cpp}{complejo.\+cpp}}\end{DoxyCompactItemize}

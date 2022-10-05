@@ -63,3 +63,9 @@ Complejo Complejo::operator+( const Complejo c ) const {
 
     return result;
 }
+
+void Complejo::print() const {
+    cout << "argument: " << arg << "\nmodulus: " << mod;
+}
+
+

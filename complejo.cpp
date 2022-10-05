@@ -13,6 +13,8 @@
 #include <cstdlib>
 #include <iostream>
 #include <cassert>
+#include <assert.h>
+#include <cmath>
 
 #include "complejo.h"
 
@@ -25,8 +27,16 @@ const float CERO = 0.0001;
 
 Complejo::Complejo(float m, float a) 
 {
+    assert( (m >= 0)  && "Error, el modulo debe ser igual o mayor que 0" );
    mod = m;
-   arg = a;
+
+    /**
+    *  Comprobar que las cordenadas polares
+    *  estan entre -PI y PI+
+    */
+     assert( (-M_PI <= a <= M_PI)  && "Error, las coordenadas deben estar entre -PI y PI" );
+     arg = a;
+
 } 
 
 bool Complejo::operator==(const Complejo c) const 
@@ -45,7 +55,7 @@ void Complejo::setRec(float re, float im)
     else
         arg = atan2(im, re);
 
-    assert(inv());
+    assert(inv() );
 }
 
 float Complejo::getReal() const 

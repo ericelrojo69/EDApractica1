@@ -58,8 +58,8 @@ float Complejo::getImag() const {
 }
 
 Complejo Complejo::operator+( const Complejo c ) const {
-    float new_arg = arg + c.arg;
-    float new_mod = mod + c.mod;
+    Complejo result;
+    result.setRec( getReal() + c.getReal(), getImag() + c.getImag() );
 
-    return {new_mod, new_arg};
+    return result;
 }

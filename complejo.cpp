@@ -39,6 +39,10 @@ Complejo::Complejo(float m, float a)
 
 } 
 
+bool Complejo::inv() {
+    return mod >= 0 && arg >= -M_PI && arg <= M_PI;
+}
+
 bool Complejo::operator==(const Complejo c) const 
 {
     if(mod == 0 && c.mod == 0)

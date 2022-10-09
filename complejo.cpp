@@ -71,3 +71,27 @@ float Complejo::getImag() const
 {
     return mod * sin(arg);
 }
+
+
+
+/**
+ * Implementando operador multiplicacion
+ *
+ */
+Complejo Complejo::operator*(const Complejo c) const {
+
+    float new_arg = c.arg + arg;
+    /**
+     * Simplificamos los gradianes si se salen de rango
+     */
+
+    if ( not(-M_PI <= new_arg <= M_PI)  ){
+        for (int i = 0; i < new_arg / 2*M_PI;  ) {
+            new_arg =- 2*M_PI;
+        }
+
+    }
+
+
+    return { mod * c.mod, new_arg };
+}

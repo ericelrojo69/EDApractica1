@@ -10,9 +10,7 @@
  * @file complejo.cpp
  */
 
-#include <cstdlib>
 #include <iostream>
-#include <cassert>
 #include <assert.h>
 #include <cmath>
 
@@ -25,11 +23,13 @@ using namespace std;
  */
 const float CERO = 0.0001;
 
-
+/**
+ * Constructor
+ */
 Complejo::Complejo(float m, float a) 
 {
     assert( (m >= 0)  && "Error, el modulo debe ser igual o mayor que 0" );
-   mod = m;
+    mod = m;
 
     /**
     *  Comprobar que las cordenadas polares
@@ -37,13 +37,20 @@ Complejo::Complejo(float m, float a)
     */
      assert( (-M_PI <= a <= M_PI)  && "Error, las coordenadas deben estar entre -PI y PI" );
      arg = a;
-
 }
 
+/**
+ * Implementando funcion inv
+ *
+ */
 bool Complejo::inv() {
     return mod >= CERO && arg >= -M_PI && arg <= M_PI;
 }
 
+/**
+ * Implementando metodo operador igual
+ *
+ */
 bool Complejo::operator==( const Complejo c ) const {
     if (mod == 0 && c.mod == 0)
         return true;
@@ -51,25 +58,10 @@ bool Complejo::operator==( const Complejo c ) const {
         return (fabs( mod - c.mod ) < CERO && fabs( arg - c.arg ) < CERO);
 }
 
-void Complejo::setRec( float re, float im ) {
-    mod = sqrt( re * re + im * im );
-    if (re == 0 && im == 0)
-        arg = 0;
-    else
-        arg = atan2( im, re );
-
-    assert( inv());
-}
-
-float Complejo::getReal() const {
-    return mod * cos( arg );
-}
-
-
-float Complejo::getImag() const {
-    return mod * sin( arg );
-
-}
+/**
+ * Implementando operador suma
+ *
+ */
 
 Complejo Complejo::operator+( const Complejo c ) const {
     Complejo result;
@@ -78,13 +70,6 @@ Complejo Complejo::operator+( const Complejo c ) const {
     return result;
 }
 
-void Complejo::print() const {
-    cout << "argument: " << arg << "\nmodulus: " << mod;
-}
-
-
-
-
 /**
  * Implementando operador multiplicacion
  *
@@ -92,7 +77,7 @@ void Complejo::print() const {
 Complejo Complejo::operator*(const Complejo c) const {
 
     float new_arg = c.arg + arg;
-    
+
     /**
      * Simplificamos los gradianes si se salen de rango
      */
@@ -104,6 +89,61 @@ Complejo Complejo::operator*(const Complejo c) const {
 
     }
 
+    /**
+    * Comprobamos que no este fuera del rango el argumento
+    */
+    assert( (-M_PI <= new_arg <= M_PI)  && "Error, las coordenadas deben estar entre -PI y PI" );
 
+    /**
+     * Comprobamos que no este fuera del rango el modulo
+     */
+    assert( (mod * c.mod  >= 0)  && "Error, el modulo debe ser igual o mayor que 0" );
     return { mod * c.mod, new_arg };
+}
+
+/**
+ * Implementando metodo imprimir
+ *
+ */
+void Complejo::print() const {
+    cout << "Modulo: " << mod << "\n";
+    cout << "Argumento: " << arg << "\n";
+}
+
+
+// Setters
+
+/**
+ * Implementando set de complejo
+ *
+ */
+void Complejo::set(float m, float a) {
+
+}
+
+/**
+ * Implementando metodo set complejo si usamos forma binomica
+ *
+ */
+
+void Complejo::setRec( float re, float im ) {
+    mod = sqrt( re * re + im * im );
+    if (re == 0 && im == 0)
+        arg = 0;
+    else
+        arg = atan2( im, re );
+
+    assert(inv());
+}
+
+// Getters
+
+float Complejo::getReal() const {
+    return mod * cos( arg );
+}
+
+
+float Complejo::getImag() const {
+    return mod * sin( arg );
+
 }

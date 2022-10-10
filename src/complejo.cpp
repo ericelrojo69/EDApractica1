@@ -17,7 +17,6 @@
 #include <iostream>
 #include <assert.h>
 #include <cmath>
-
 #include "complejo.h"
 
 using namespace std;
@@ -29,21 +28,21 @@ const float CERO = 0.0001;
 
 /**
  * Implementando metodo inv
- * @return Si es verdadero o falso
+ * @return booleano Si el modulo y el argumento estan dentro del rango
  */
 bool Complejo::inv() {
      
       /**
       *  Comprobar que el modulo este dentro del rango adecuado
       */
-     assert( (mod >= CERO)  && "Error, el modulo debe ser igual o mayor que 0" );
+     assert( (mod >= O)  && "Error, el modulo debe ser igual o mayor que 0" );
      
      /**
       * Comprobamos que no este fuera del rango el argumento
       */
      assert( (-M_PI <= arg <= M_PI)  && "Error, las coordenadas deben estar entre -PI y PI" );
      
-    return mod >= CERO && arg >= -M_PI && arg <= M_PI;
+    return (mod >= 0) && (arg >= -M_PI) && (arg <= M_PI);
 }
 
 /**
@@ -67,9 +66,8 @@ Complejo::Complejo(float m, float a)
 
 /**
  * Implementando metodo operador igual
- * @param[in] c Combjeto complejo
- * @param[in] arg Argumento
- * @return Objeto Complejo
+ * @param[in] c Objeto complejo
+ * @return Booleano Si equivalete un numero complejo a otro
  */
 bool Complejo::operator==( const Complejo c ) const {
     if (mod == 0 && c.mod == 0)
@@ -80,19 +78,31 @@ bool Complejo::operator==( const Complejo c ) const {
 
 /**
  * Implementando operador suma
- *
+ * @param[in] c Objeto complejo
+ * @return Booleano Si equivalete un numero complejo a otro
  */
 
 Complejo Complejo::operator+( const Complejo c ) const {
     Complejo result;
     result.setRec( getReal() + c.getReal(), getImag() + c.getImag() );
-
+    
+     /**
+     * Comprobamos el argumento enten dentro del rango
+     */
+    (-M_PI <= result.arg <= M_PI)  && "Error, las coordenadas deben estar entre -PI y PI" );
+    
+    /**
+     * Comprobamos que no este fuera del rango el modulo
+     */
+    assert( (result.mod  >= 0)  && "Error, el modulo debe ser igual o mayor que 0" );
+    
     return result;
 }
 
 /**
  * Implementando operador multiplicacion
- *
+ * @param[in] c Objeto complejo
+ * @return Objeto Complejo
  */
 Complejo Complejo::operator*(const Complejo c) const {
 
@@ -108,9 +118,12 @@ Complejo Complejo::operator*(const Complejo c) const {
         }
 
     }
-
-
-
+    
+     /**
+     * Comprobamos el argumento enten dentro del rango
+     */
+    (-M_PI <= new_arg <= M_PI)  && "Error, las coordenadas deben estar entre -PI y PI" );
+    
     /**
      * Comprobamos que no este fuera del rango el modulo
      */
@@ -120,29 +133,48 @@ Complejo Complejo::operator*(const Complejo c) const {
 
 /**
  * Implementando metodo imprimir
- *
+ *  @return Imprime mensaje texto del modulo y el argumento
  */
 void Complejo::print() const {
     cout << "Modulo: " << mod << "\n";
     cout << "Argumento: " << arg << "\n";
 }
 
-
 // Setters
 
 /**
  * Implementando set de complejo
- *
+ *  @param[in] m Modulo
+ *  @param[in] a Argumento
  */
 void Complejo::set(float m, float a) {
-
+    
+    if(-M_PI <= m <= M_PI) {
+        arg = a;
+    }
+    
+    /**
+     * Comprobamos el argumento enten dentro del rango
+     */
+    assert(-M_PI <= m <= M_PI)  && "Error, las coordenadas deben estar entre -PI y PI" );
+    
+     if(a  >= 0) {
+        mod = m;
+    }
+    
+    /**
+     * Comprobamos que no este fuera del rango el modulo
+     */
+    assert( a  >= 0)  && "Error, el modulo debe ser igual o mayor que 0" );
+    
+    
 }
 
 /**
  * Implementando metodo set complejo si usamos forma binomica
- *
+ *  @param[in] re Coordenada real
+ *  @param[in] im Coordenada imaginaria
  */
-
 void Complejo::setRec( float re, float im ) {
     mod = sqrt( re * re + im * im );
     if (re == 0 && im == 0)
@@ -154,12 +186,19 @@ void Complejo::setRec( float re, float im ) {
 }
 
 // Getters
+/**
+ * Implementando devolver parte real
+ *  @return Devuelve la parte real
+ */
 
 float Complejo::getReal() const {
     return mod * cos( arg );
 }
 
-
+/**
+ * Implementando devolver parte imaginaria
+ *  @return Devuelve la parte imaginaria
+ */
 float Complejo::getImag() const {
     return mod * sin( arg );
 

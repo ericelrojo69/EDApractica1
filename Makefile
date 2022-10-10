@@ -1,11 +1,5 @@
-todo: complejo
-
-complejo.o: complejo.h complejo.cpp
-	g++ -c complejo.cpp -Wall -Werror -Wextra
-
-complejo: complejo.o
-	g++ complejo.o -o complejo
+main: ./src/complejo.h ./src/complejo.cpp ./src/main.cpp
+	clang++ ./src/main.cpp -Wall -Werror -Wextra -o main.out
 
 clean:
-	rm complejo.o
 	rm complejo

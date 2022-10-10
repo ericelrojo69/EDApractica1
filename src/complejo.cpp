@@ -63,6 +63,72 @@ Complejo::Complejo(float m, float a)
 }
 
 
+// Setters
+
+/**
+ * Implementando set de complejo
+ *  @param[in] m Modulo
+ *  @param[in] a Argumento
+ */
+void Complejo::set(float m, float a) {
+
+    if(-M_PI <= m <= M_PI) {
+        arg = a;
+    }
+
+    /**
+     * Comprobamos el argumento enten dentro del rango
+     */
+    assert( (-M_PI <= m <= M_PI)  && "Error, las coordenadas deben estar entre -PI y PI" );
+
+    if(a  >= 0) {
+        mod = m;
+    }
+
+    /**
+     * Comprobamos que no este fuera del rango el modulo
+     */
+    assert( a  >= 0  && "Error, el modulo debe ser igual o mayor que 0" );
+
+
+}
+
+/**
+ * Implementando metodo set complejo si usamos forma binomica
+ *  @param[in] re Coordenada real
+ *  @param[in] im Coordenada imaginaria
+ */
+void Complejo::setRec( float re, float im ) {
+    mod = sqrt( re * re + im * im );
+    if (re == 0 && im == 0)
+        arg = 0;
+    else
+        arg = atan2( im, re );
+
+    assert(inv());
+}
+
+// Getters
+/**
+ * Implementando devolver parte real
+ *  @return Devuelve la parte real
+ */
+
+float Complejo::getReal() const {
+    return mod * cos( arg );
+}
+
+/**
+ * Implementando devolver parte imaginaria
+ *  @return Devuelve la parte imaginaria
+ */
+float Complejo::getImag() const {
+    return mod * sin( arg );
+
+}
+
+
+
 
 /**
  * Implementando metodo operador igual
@@ -141,68 +207,4 @@ Complejo Complejo::operator*(const Complejo c) const {
 void Complejo::print() const {
     cout << "Modulo: " << mod << "\n";
     cout << "Argumento: " << arg << "\n";
-}
-
-// Setters
-
-/**
- * Implementando set de complejo
- *  @param[in] m Modulo
- *  @param[in] a Argumento
- */
-void Complejo::set(float m, float a) {
-    
-    if(-M_PI <= m <= M_PI) {
-        arg = a;
-    }
-    
-    /**
-     * Comprobamos el argumento enten dentro del rango
-     */
-    assert( (-M_PI <= m <= M_PI)  && "Error, las coordenadas deben estar entre -PI y PI" );
-    
-     if(a  >= 0) {
-        mod = m;
-    }
-    
-    /**
-     * Comprobamos que no este fuera del rango el modulo
-     */
-    assert( a  >= 0  && "Error, el modulo debe ser igual o mayor que 0" );
-    
-    
-}
-
-/**
- * Implementando metodo set complejo si usamos forma binomica
- *  @param[in] re Coordenada real
- *  @param[in] im Coordenada imaginaria
- */
-void Complejo::setRec( float re, float im ) {
-    mod = sqrt( re * re + im * im );
-    if (re == 0 && im == 0)
-        arg = 0;
-    else
-        arg = atan2( im, re );
-
-    assert(inv());
-}
-
-// Getters
-/**
- * Implementando devolver parte real
- *  @return Devuelve la parte real
- */
-
-float Complejo::getReal() const {
-    return mod * cos( arg );
-}
-
-/**
- * Implementando devolver parte imaginaria
- *  @return Devuelve la parte imaginaria
- */
-float Complejo::getImag() const {
-    return mod * sin( arg );
-
 }

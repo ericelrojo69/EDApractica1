@@ -54,7 +54,7 @@ public:
     * Invariante de clase para complejos en notacion polar.
     * @return Indicador de complejo valido (true) o invalido (false).
     */
-    bool inv();
+    bool inv() const;
 
     /**
     * Obtiene la parte real del complejo.

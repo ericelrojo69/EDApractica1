@@ -8,6 +8,10 @@
  *     Universitat de Valencia
  *
  * @file complejo.cpp
+ * @autor Eric Navarro Mattick
+ * @autor Oscar Adam Valent
+ * @date 10/10/2022
+ * @version 1.0
  */
 
 #include <iostream>
@@ -24,7 +28,23 @@ using namespace std;
 const float CERO = 0.0001;
 
 /**
+ * Implementando metodo inv
+ * 
+ *
+ */
+bool Complejo::inv() {
+     /**
+    * Comprobamos que no este fuera del rango el argumento
+    */
+    assert( (-M_PI <= new_arg <= M_PI)  && "Error, las coordenadas deben estar entre -PI y PI" );
+    return mod >= CERO && arg >= -M_PI && arg <= M_PI;
+}
+
+/**
  * Constructor
+ * @param[in] m Modulo
+ * @param[in] arg Argumento
+ * @return Objeto Complejo
  */
 Complejo::Complejo(float m, float a) 
 {
@@ -39,13 +59,7 @@ Complejo::Complejo(float m, float a)
      arg = a;
 }
 
-/**
- * Implementando funcion inv
- *
- */
-bool Complejo::inv() {
-    return mod >= CERO && arg >= -M_PI && arg <= M_PI;
-}
+
 
 /**
  * Implementando metodo operador igual
@@ -89,10 +103,7 @@ Complejo Complejo::operator*(const Complejo c) const {
 
     }
 
-    /**
-    * Comprobamos que no este fuera del rango el argumento
-    */
-    assert( (-M_PI <= new_arg <= M_PI)  && "Error, las coordenadas deben estar entre -PI y PI" );
+
 
     /**
      * Comprobamos que no este fuera del rango el modulo

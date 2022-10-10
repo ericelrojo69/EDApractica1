@@ -29,41 +29,47 @@ const float CERO = 0.0001;
 
 /**
  * Implementando metodo inv
- * 
- *
+ * @return Si es verdadero o falso
  */
 bool Complejo::inv() {
+     
+      /**
+      *  Comprobar que el modulo este dentro del rango adecuado
+      */
+     assert( (mod >= CERO)  && "Error, el modulo debe ser igual o mayor que 0" );
+     
      /**
-    * Comprobamos que no este fuera del rango el argumento
-    */
-    assert( (-M_PI <= new_arg <= M_PI)  && "Error, las coordenadas deben estar entre -PI y PI" );
+      * Comprobamos que no este fuera del rango el argumento
+      */
+     assert( (-M_PI <= arg <= M_PI)  && "Error, las coordenadas deben estar entre -PI y PI" );
+     
     return mod >= CERO && arg >= -M_PI && arg <= M_PI;
 }
 
 /**
  * Constructor
  * @param[in] m Modulo
- * @param[in] arg Argumento
+ * @param[in] a Argumento
  * @return Objeto Complejo
  */
 Complejo::Complejo(float m, float a) 
 {
-    assert( (m >= 0)  && "Error, el modulo debe ser igual o mayor que 0" );
     mod = m;
-
-    /**
-    *  Comprobar que las cordenadas polares
-    *  estan entre -PI y PI+
-    */
-     assert( (-M_PI <= a <= M_PI)  && "Error, las coordenadas deben estar entre -PI y PI" );
-     arg = a;
+    arg = a;
+     
+     /**
+     * Comprobamos el modulo y el argumento 
+     */
+    inv();
 }
 
 
 
 /**
  * Implementando metodo operador igual
- *
+ * @param[in] c Combjeto complejo
+ * @param[in] arg Argumento
+ * @return Objeto Complejo
  */
 bool Complejo::operator==( const Complejo c ) const {
     if (mod == 0 && c.mod == 0)

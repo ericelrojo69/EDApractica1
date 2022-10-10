@@ -15,7 +15,7 @@
  */
 
 #include <iostream>
-#include <assert.h>
+#include <cassert>
 #include <cmath>
 #include "complejo.h"
 
@@ -30,12 +30,12 @@ const float CERO = 0.0001;
  * Implementando metodo inv
  * @return booleano Si el modulo y el argumento estan dentro del rango
  */
-bool Complejo::inv() {
+bool Complejo::inv() const {
      
       /**
       *  Comprobar que el modulo este dentro del rango adecuado
       */
-     assert( (mod >= O)  && "Error, el modulo debe ser igual o mayor que 0" );
+     assert( mod >= 0  && "Error, el modulo debe ser igual o mayor que 0" );
      
      /**
       * Comprobamos que no este fuera del rango el argumento
@@ -70,10 +70,13 @@ Complejo::Complejo(float m, float a)
  * @return Booleano Si equivalete un numero complejo a otro
  */
 bool Complejo::operator==( const Complejo c ) const {
-    if (mod == 0 && c.mod == 0)
+    if (mod == 0 && c.mod == 0){
         return true;
-    else
+    }
+    else {
         return (fabs( mod - c.mod ) < CERO && fabs( arg - c.arg ) < CERO);
+    }
+
 }
 
 /**
@@ -89,7 +92,7 @@ Complejo Complejo::operator+( const Complejo c ) const {
      /**
      * Comprobamos el argumento enten dentro del rango
      */
-    (-M_PI <= result.arg <= M_PI)  && "Error, las coordenadas deben estar entre -PI y PI" );
+    assert( (-M_PI <= result.arg <= M_PI)  && "Error, las coordenadas deben estar entre -PI y PI" );
     
     /**
      * Comprobamos que no este fuera del rango el modulo
@@ -112,7 +115,7 @@ Complejo Complejo::operator*(const Complejo c) const {
      * Simplificamos los gradianes si se salen de rango
      */
 
-    if ( not(-M_PI <= new_arg <= M_PI)  ){
+    if (-M_PI <= new_arg > M_PI){
         for (int i = 0; i < new_arg / 2*M_PI;  ) {
             new_arg =- 2*M_PI;
         }
@@ -122,7 +125,7 @@ Complejo Complejo::operator*(const Complejo c) const {
      /**
      * Comprobamos el argumento enten dentro del rango
      */
-    (-M_PI <= new_arg <= M_PI)  && "Error, las coordenadas deben estar entre -PI y PI" );
+    assert( (-M_PI <= new_arg <= M_PI)  && "Error, las coordenadas deben estar entre -PI y PI" );
     
     /**
      * Comprobamos que no este fuera del rango el modulo
@@ -156,7 +159,7 @@ void Complejo::set(float m, float a) {
     /**
      * Comprobamos el argumento enten dentro del rango
      */
-    assert(-M_PI <= m <= M_PI)  && "Error, las coordenadas deben estar entre -PI y PI" );
+    assert( (-M_PI <= m <= M_PI)  && "Error, las coordenadas deben estar entre -PI y PI" );
     
      if(a  >= 0) {
         mod = m;
@@ -165,7 +168,7 @@ void Complejo::set(float m, float a) {
     /**
      * Comprobamos que no este fuera del rango el modulo
      */
-    assert( a  >= 0)  && "Error, el modulo debe ser igual o mayor que 0" );
+    assert( a  >= 0  && "Error, el modulo debe ser igual o mayor que 0" );
     
     
 }

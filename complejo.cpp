@@ -25,6 +25,7 @@ using namespace std;
  */
 const float CERO = 0.0001;
 
+
 Complejo::Complejo(float m, float a) 
 {
     assert( (m >= 0)  && "Error, el modulo debe ser igual o mayor que 0" );
@@ -37,40 +38,50 @@ Complejo::Complejo(float m, float a)
      assert( (-M_PI <= a <= M_PI)  && "Error, las coordenadas deben estar entre -PI y PI" );
      arg = a;
 
-} 
+}
 
 bool Complejo::inv() {
-    return mod >= 0 && arg >= -M_PI && arg <= M_PI;
+    return mod >= CERO && arg >= -M_PI && arg <= M_PI;
 }
 
-bool Complejo::operator==(const Complejo c) const 
-{
-    if(mod == 0 && c.mod == 0)
+bool Complejo::operator==( const Complejo c ) const {
+    if (mod == 0 && c.mod == 0)
         return true;
     else
-        return (fabs(mod - c.mod) < CERO && fabs(arg - c.arg) < CERO);
+        return (fabs( mod - c.mod ) < CERO && fabs( arg - c.arg ) < CERO);
 }
 
-void Complejo::setRec(float re, float im) 
-{
-    mod = sqrt(re*re + im*im);
-    if(re == 0 && im == 0)
+void Complejo::setRec( float re, float im ) {
+    mod = sqrt( re * re + im * im );
+    if (re == 0 && im == 0)
         arg = 0;
     else
-        arg = atan2(im, re);
+        arg = atan2( im, re );
 
-    assert(inv() );
+    assert( inv());
 }
 
-float Complejo::getReal() const 
-{
-    return mod * cos(arg);
+float Complejo::getReal() const {
+    return mod * cos( arg );
 }
 
-float Complejo::getImag() const 
-{
-    return mod * sin(arg);
+
+float Complejo::getImag() const {
+    return mod * sin( arg );
+
 }
+
+Complejo Complejo::operator+( const Complejo c ) const {
+    Complejo result;
+    result.setRec( getReal() + c.getReal(), getImag() + c.getImag() );
+
+    return result;
+}
+
+void Complejo::print() const {
+    cout << "argument: " << arg << "\nmodulus: " << mod;
+}
+
 
 
 
@@ -81,6 +92,7 @@ float Complejo::getImag() const
 Complejo Complejo::operator*(const Complejo c) const {
 
     float new_arg = c.arg + arg;
+    
     /**
      * Simplificamos los gradianes si se salen de rango
      */

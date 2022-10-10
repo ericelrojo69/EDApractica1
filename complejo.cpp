@@ -13,6 +13,8 @@
 #include <cstdlib>
 #include <iostream>
 #include <cassert>
+#include <assert.h>
+#include <cmath>
 
 #include "complejo.h"
 
@@ -23,9 +25,19 @@ using namespace std;
  */
 const float CERO = 0.0001;
 
-Complejo::Complejo( float m, float a ) {
-    mod = m;
-    arg = a;
+
+Complejo::Complejo(float m, float a) 
+{
+    assert( (m >= 0)  && "Error, el modulo debe ser igual o mayor que 0" );
+   mod = m;
+
+    /**
+    *  Comprobar que las cordenadas polares
+    *  estan entre -PI y PI+
+    */
+     assert( (-M_PI <= a <= M_PI)  && "Error, las coordenadas deben estar entre -PI y PI" );
+     arg = a;
+
 }
 
 bool Complejo::inv() {
@@ -53,8 +65,10 @@ float Complejo::getReal() const {
     return mod * cos( arg );
 }
 
+
 float Complejo::getImag() const {
     return mod * sin( arg );
+
 }
 
 Complejo Complejo::operator+( const Complejo c ) const {
@@ -69,3 +83,27 @@ void Complejo::print() const {
 }
 
 
+
+
+/**
+ * Implementando operador multiplicacion
+ *
+ */
+Complejo Complejo::operator*(const Complejo c) const {
+
+    float new_arg = c.arg + arg;
+    
+    /**
+     * Simplificamos los gradianes si se salen de rango
+     */
+
+    if ( not(-M_PI <= new_arg <= M_PI)  ){
+        for (int i = 0; i < new_arg / 2*M_PI;  ) {
+            new_arg =- 2*M_PI;
+        }
+
+    }
+
+
+    return { mod * c.mod, new_arg };
+}
